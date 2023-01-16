@@ -9,35 +9,216 @@
   <title>Frontend Mentor | Expenses chart component</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+    }
+    h2 {
+      font-weight: 700;
+    }
+    p, hr {
+      color: hsl(28, 10%, 53%);
+    }
+    hr {
+      margin: 1rem 0;
+    }
+
+    main {
+      min-height: 100vh;
+      background: hsl(27, 66%, 92%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    main > .container {
+      width: 30rem;
+    }
+    main > .container > .top-section,
+    main > .container > .bottom-section {
+      padding: 1.4rem;
+      border-radius: 1.1rem;
+    }
+    main > .container > .top-section {
+      background: hsl(10, 79%, 65%);
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+    main > .container > .top-section > div >p {
+      color: white;
+    }
+    main > .container > .bottom-section {
+      background: white;
+    }
+    main > .container > .bottom-section > .graph-data{
+      display: flex;
+      justify-content: space-between;
+    }
+    main > .container > .bottom-section > .graph-data > .graph-value {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      height: 15rem;
+      margin-top: 3rem;
+    }
+    main > .container > .bottom-section > .graph-data > .graph-value > .data {
+      width: 3rem;
+      height: 100%;
+      background: hsl(10, 79%, 65%);;
+      border-radius: 0.3rem;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    main > .container > .bottom-section > .graph-data > .graph-value > .data:hover {
+      opacity: .7;
+    }
+    main > .container > .bottom-section > .graph-data > .graph-value > .data:hover::before {
+      content: attr(data-value);
+      position: absolute;
+      background-color: black;
+      padding: 0.3rem;
+      color: white;
+      border-radius: 0.2rem;
+      top: -2.5rem;
+    }
+    main > .container > .bottom-section > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    main > .container > .bottom-section > div > div {
+      text-align: end;
+    }
+    main > .container > .bottom-section > div > span{
+      font-weight: 800;
+      font-size: 3rem;
+    }
+    footer.attribution { font-size: 11px; text-align: center; }
+    footer.attribution a { color: hsl(228, 45%, 44%); }
+
+    @media only screen and (max-width:375px)
+    {
+      main > .container {
+        width: 20rem;
+      }
+      main > .container > .top-section,
+      main > .container > .bottom-section {
+        padding: 1rem;
+      }
+      main > .container > .bottom-section > .graph-data > .graph-value > .data {
+        width: 2.3rem;
+      }
+      main > .container > .bottom-section > .graph-data > .graph-value > .data:hover::before {
+        font-size: 0.6rem;
+        top: -1.9rem;
+      }
+      main > .container > .bottom-section > div > span{
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
-
-  My balance
-  $921.48
-
-  Spending - Last 7 days
-
-  mon
-  tue
-  wed
-  thu
-  fri
-  sat
-  sun
-
-  Total this month
-  $478.33
-
-  +2.4%
-  from last month
+  <main>
+    <div class="container">
+      <div class="top-section">
+        <div>
+          <p>My balance</p>
+          <h1>$921.48</h1>
+        </div>
+        <img src="images/logo.svg" alt="Logo">
+      </div>
+      <div class="bottom-section">
+        <h3>Spending - Last 7 days</h3>
+          <div class="graph-data">
+            <div class="graph-value">
+              <div id="mon" class="data"></div>
+              <p>mon</p>
+            </div>
+            <div class="graph-value">
+              <div id="tue" class="data"></div>
+              <p>tue</p>
+            </div>
+            <div class="graph-value">
+              <div id="wed" class="data"></div>
+              <p>wed</p>
+            </div>
+            <div class="graph-value">
+              <div id="thu" class="data"></div>
+              <p>thu</p>
+            </div>
+            <div class="graph-value">
+              <div id="fri" class="data"></div>
+              <p>fri</p>
+            </div>
+            <div class="graph-value">
+              <div id="sat" class="data"></div>
+              <p>sat</p>
+            </div>
+            <div class="graph-value">
+              <div id="sun" class="data"></div>
+              <p>sun</p>
+            </div>
+          </div>
+        <hr />
+        <p>Total this month</p>
+        <div>
+          <span>$478.33</span>
+          <div>
+            <h5>+2.4%</h5>
+            <p>from last month</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
   
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  <footer class="attribution">
+    Challenge by <a rel="noopener" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/Terciel-22">Terciel-22</a>.
+  </footer>
+
+  <script>
+    //assuming the peak is $70
+    let MAX = 70;
+
+    async function fetchJSON()
+    {
+      const response = await fetch("./data.json");
+      const data = await response.json();
+      let biggerNum = 0;
+      let biggestAmountDay = "";
+      for(let i=0; i<data.length; i++)
+      {
+        if(biggerNum<data[i].amount)
+        {
+          biggerNum = data[i].amount;
+          biggestAmountDay = document.getElementById(data[i].day);
+        }
+        const day = document.getElementById(data[i].day);
+        percent = (data[i].amount/MAX) * 100;
+        day.style.height = `${percent}%`
+        day.setAttribute("data-value", "$"+data[i].amount);
+      }
+      biggestAmountDay.style.background = "hsl(186, 34%, 60%)";
+    }
+
+    fetchJSON();
+  </script>
 </body>
 </html>
